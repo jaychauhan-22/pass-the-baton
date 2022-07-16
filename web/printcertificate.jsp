@@ -31,7 +31,6 @@
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hackathon", "root", "");
                 int cid = Integer.parseInt(request.getParameter("cid"));
-                out.println(cid);
                 Statement st = con.createStatement();
                 ResultSet rst = st.executeQuery("select * from certificates where id = "+cid+";");
                 if(rst.first())

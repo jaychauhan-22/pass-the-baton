@@ -1,5 +1,6 @@
 <!doctype html>
 <%@include file="logincheck.jsp"%>
+<%@include file="footer.jsp"%>
 <%@page import="java.sql.*"%>
 <html lang="en">
 
@@ -34,7 +35,7 @@
                 <a class="navbar-brand" href="#">
                     <img src="assest/images/img-02.png" width="30" height="30" class="d-inline-block align-top"
                          alt="">
-                    NameofWebsite
+                        PASS-THE-BATON
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,13 +45,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#carouselExampleCaptions">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#our-team-id">Our Team</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact-us-id">Contact Us</a>
+                            <a class="nav-link" href="home.jsp">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <!-- <li class="nav-item my-2 my-lg-0">
                           
@@ -71,8 +66,26 @@
 
 
         <!-- Main Content -->
-        <main>
-            
+        <main class="container">
+                                <%
+                                    try
+                                    {
+                                    String url_status = (String)session.getAttribute("urlsent");
+                                    if(url_status!=null)
+                                    {
+                                        if(url_status=="1")
+                                        {
+                                            out.println("<script>alert('Submission Sent Successfully..')</script>");
+                                            session.setAttribute("urlsent", null);
+                                        }
+                                        else if(url_status=="2")
+                                        {out.println("<script>alert('Something went wrong.. Please Try Again!')</script>");
+                                        session.setAttribute("urlsent", null);}
+                                    }
+                                    }catch(Exception e){out.println(e);
+                                    }
+                                            %>
+            <h1><u>Available Projects</u></h1>
             <%
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hackathon", "root", "");
@@ -91,7 +104,7 @@
                         String oname = rst2.getString(2);
             %>
             <form action="viewprojectdetails.jsp" method="post">
-            <div class="card mx-5 my-3">
+            <div class="card my-3">
                 <h5 class="card-header"><%= oname %></h5>
                 <div class="card-body">
                     <h5 class="card-title"><%= title %></h5>
@@ -104,7 +117,6 @@
                         2 days ago
                     </div>
             </div>
-                    
             </form>
             <%
                     }
@@ -115,19 +127,6 @@
 
 
 
-        <!-- Footer -->
-        <footer>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="center">
-                    <ul>
-                        <li>Copyright &#169; Titlename</li>
-                        <li>Hello</li>
-                        <li></li>
-                    </ul>
-                </div>
-            </nav>
-        </footer>
-        <!-- Footer Ended -->
 
         <!-- jQuery and Bootstrap Bundle (includes Popper) -->
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"

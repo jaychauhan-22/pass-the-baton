@@ -41,12 +41,12 @@
         <servlet-class>pckg1.viewprojectdetails</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>OpenPDF</servlet-name>
-        <servlet-class>pckg1.OpenPDF</servlet-class>
+        <servlet-name>UploadSolution</servlet-name>
+        <servlet-class>pckg1.UploadSolution</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UploadReport</servlet-name>
-        <servlet-class>pckg1.UploadReport</servlet-class>
+        <servlet-name>OrgUpdateProfile</servlet-name>
+        <servlet-class>pckg1.OrgUpdateProfile</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
@@ -89,12 +89,12 @@
         <url-pattern>/viewprojectdetails</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>OpenPDF</servlet-name>
-        <url-pattern>/OpenPDF</url-pattern>
+        <servlet-name>UploadSolution</servlet-name>
+        <url-pattern>/UploadSolution</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UploadReport</servlet-name>
-        <url-pattern>/UploadReport</url-pattern>
+        <servlet-name>OrgUpdateProfile</servlet-name>
+        <url-pattern>/OrgUpdateProfile</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

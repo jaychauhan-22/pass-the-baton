@@ -70,7 +70,7 @@
                             </span>
                         </div>
                         <div class="wrap-input100 validate-input" data-validate = "This Field is required">
-                            <input class="input100" type="number" name="passyear" placeholder="Passing Year">
+                            <input class="input100" type="number" name="passyear" min="2022" placeholder="Passing Year">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fa fa-graduation-cap" aria-hidden="true"></i>

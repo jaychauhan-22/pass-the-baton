@@ -1,61 +1,44 @@
 package pckg1;
-
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.Statement;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
-
-@MultipartConfig
-public class UploadReport extends HttpServlet {
+import javax.servlet.http.HttpSession;
+public class UploadSolution extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int pid = Integer.parseInt(request.getParameter("pid"));
-            Part filePart = request.getPart("report");
-            
-            final PrintWriter writer = response.getWriter();
-            InputStream pdfBytes = null;
             try{
-                if (!filePart.getContentType().equals("application/pdf")){
-                    writer.println("<br/> Invalid File");
-                    return;
-                }
-                else if (filePart.getSize()>1048576 ) { //2mb
-                    writer.println("<br/> File size too big");
-                    return;
-                }
-               
-                pdfBytes = filePart.getInputStream();
-                final byte[] bytes = new byte[pdfBytes.available()];
-                
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/hackathon", "root", "");
-                
-                PreparedStatement stmt = conn.prepareStatement("INSERT INTO reports (report, pid) VALUES(?,?)");
-                stmt.setBytes(1, bytes);
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hackathon", "root", "");
+                HttpSession session = request.getSession();
+                int uid = Integer.parseInt(session.getAttribute("uid").toString());
+                int pid = Integer.parseInt(request.getParameter("pid").toString());
+                String url = request.getParameter("url");
+                PreparedStatement stmt = conn.prepareStatement("insert into solutions(uid,pid,link) values (?,?,?)");
+                stmt.setInt(1,uid);
                 stmt.setInt(2, pid);
-                int res = stmt.executeUpdate();
-                
-                if(res >= 1){
-                    writer.println("Report Uploaded");
-//                    response.sendRedirect("org_home.jsp");
+                stmt.setString(3, url);
+                int result = stmt.executeUpdate();
+                if(result == 1)
+                {
+                    session.setAttribute("urlsent", "1");
+                    response.sendRedirect("home.jsp");
                 }
-                else{
-                    writer.println("Error: Couldn't upload the file");
+                else
+                {
+                    session.setAttribute("urlsent", "2");
+                    response.sendRedirect("home.jsp");
                 }
-                    
+                response.sendRedirect("viewproject.jsp?pid="+pid+"");
             } catch(Exception e){
-                System.out.println(e);
+                out.println(e);
             }
         }
     }

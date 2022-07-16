@@ -1,45 +1,41 @@
 package pckg1;
-
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.*;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
-public class OpenPDF extends HttpServlet {
+public class OrgUpdateProfile extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            int rid = Integer.parseInt(request.getParameter("rid"));
-            response.reset();
-            response.setContentType("application/pdf");
-            response.setHeader("Content-disposition","inline; filename="+rid+".pdf" );
- 
-            ServletOutputStream sos = response.getOutputStream();
-            
             try{
-                
+                HttpSession s = request.getSession();
+                int oid = Integer.parseInt((String)s.getAttribute("oid"));
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/hackathon", "root", "");
-                
-                PreparedStatement stmt = conn.prepareStatement("select report from reports where rid=?");
-                stmt.setInt(1, rid);
-                ResultSet rs = stmt.executeQuery();
-                if(rs.next())
-                    sos.write(rs.getBytes("report"));
-                else
-                    return;
-            } catch(Exception e){
-                System.out.println(e);
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hackathon", "root", "");
+                String name = request.getParameter("name");
+                String email = request.getParameter("email");
+                String password = request.getParameter("password");
+                String desc = request.getParameter("desc");
+                    PreparedStatement pst = con.prepareStatement("update organizations set orgname = ?, email = ?, orgdescription = ?, password = ? where id = ?");
+                    pst.setString(1,name);
+                    pst.setString(2, email);
+                    pst.setString(3, desc);
+                    pst.setString(4, password);
+                    pst.setInt(5, oid);
+                    int result = pst.executeUpdate();
+                    if(result==1)
+                        response.sendRedirect("org_profile.jsp");
+                    else
+                        out.println("<script>alert('Error Occurred.. Please Try Again')</script>");
+            }
+            catch(Exception e)
+            {
+                out.println("Exception Occurred: "+e);
             }
         }
     }

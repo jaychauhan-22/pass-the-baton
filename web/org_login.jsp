@@ -59,12 +59,6 @@
 					</div>
 
 					<div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
-						</span>
-						<a class="txt2" href="#">
-							Username / Password?
-						</a>
                                             <p class="txt1" style="color: red">
                                                     <br>
 							<%

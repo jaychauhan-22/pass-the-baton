@@ -8,7 +8,7 @@
     </head>
     <body>
         <%
-            String s = (String)session.getAttribute("uid");
+            String s = (String)session.getAttribute("oid");
             if(s == null)
                 response.sendRedirect("index.jsp");
             

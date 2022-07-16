@@ -9,7 +9,6 @@
     <body>
         <%
             String s = (String)session.getAttribute("uid");
-            out.println(s);
             if(s == null)
                 response.sendRedirect("index.jsp");
             
