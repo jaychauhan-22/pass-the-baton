@@ -1,0 +1,52 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Baloo Bhai 2', cursive;
+}
+main{
+    margin-top: 7vh;
+}
+/* center the contents */
+.center{
+    text-align: center;
+    width: 100vw;
+}
+
+/* Center the elements of footer */
+footer nav ul li{
+    font-size: 20px;
+    color: white;
+    display: block;
+}
+
+/* Wallpaper of Our team Section */
+.our-team{
+    color: white;
+    background: url("../img/team-cover1.jpg");
+    background-size: cover;
+}
+
+/* Underline the Title of label */
+.title label{
+    text-decoration: underline;
+}
+.title{
+    font-size: 30px;
+    padding-top: 60px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Contact Us form Wallpaper */
+.contact-us{
+    color: white;
+    background: url('../img/Background01.jpg');
+    background-size: cover;
+}
+.contact-form{
+    background-color: white;
+    border-radius: 5px;
+    padding: 0px 20px;
+    margin: auto 20vw;
+    opacity: 0.8;
+}
