@@ -48,6 +48,18 @@
         <servlet-name>OrgUpdateProfile</servlet-name>
         <servlet-class>pckg1.OrgUpdateProfile</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteProject</servlet-name>
+        <servlet-class>pckg1.DeleteProject</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ApproveProject</servlet-name>
+        <servlet-class>pckg1.ApproveProject</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>IssueCertificate</servlet-name>
+        <servlet-class>pckg1.IssueCertificate</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/signup</url-pattern>
@@ -95,6 +107,18 @@
     <servlet-mapping>
         <servlet-name>OrgUpdateProfile</servlet-name>
         <url-pattern>/OrgUpdateProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteProject</servlet-name>
+        <url-pattern>/DeleteProject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApproveProject</servlet-name>
+        <url-pattern>/ApproveProject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IssueCertificate</servlet-name>
+        <url-pattern>/IssueCertificate</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
