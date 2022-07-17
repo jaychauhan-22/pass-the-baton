@@ -24,6 +24,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap" rel="stylesheet">
         <!--====================================================================================================================-->
         <script src="https://kit.fontawesome.com/d72e2bd739.js" crossorigin="anonymous"></script>
+        <title>Certificate Generator</title>
     </head>
     <body>
         <!-- Header Started -->
@@ -75,17 +76,22 @@
                     String projectTitle = res.getString(2);
                     String projectDescription = res.getString(3);
                     String preferences = res.getString(4);
+                    String statusProject = res.getString(6);
         %>
         <div class="container my-4 mx-auto">
             <div class="bg-white card shadow-lg p-4 p-lg-4">
                 <!-- header -->            
                 <div class="d-flex justify-content-between">
                     <h1 class="font-monospace"><%= projectTitle%></h1>
-                    <div class="float-right">
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">
+                    <div class="float-right d-flex justify-content-center align-items-center">
+                        <button type="button" class="btn btn-warning mx-2" data-toggle="modal" data-target="#staticBackdrop" title="Edit Project">
                             <i class="fa fa-pencil"></i>
                         </button>
-                        <button class="btn btn-danger" title="Edit Project"><i class="fa fa-trash"></i></button>
+                        <form action="DeleteProject" method="post">
+                            
+                            <input type="hidden" name="pid" value="<%= projectId %>">
+                            <button class="btn btn-danger" title="Delete Project" type="submit"><i class="fa fa-trash"></i></button>
+                        </form>
                     </div>
                 </div>
                 <hr>
@@ -102,13 +108,61 @@
                         <%= preferences%>
                     </p>
                 </div>
+                    
+                    
+                    
+                    <div>
+                    
+                    <%
+                        Statement st2 = con.createStatement();
+                        ResultSet r2 = st2.executeQuery("Select * from solutions where sid = (select sid from projects where pid = "+pid+" and status = 'under development' );");
+                        
+                        {
+                            %>
+                        <h4>Ongoing Solutions:</h4>
+                        <%
+                        while (r2.next()) {
+                            Statement st3 = con.createStatement();
+                            int userId = r2.getInt(2);
+                            ResultSet r3 = st3.executeQuery("Select * from users where id = " + r2.getInt(2) + ";");
+                            if (r3.next()) {
+                    %>
+                    <div class="p-2 p-lg-2">
+                        <div class="card m-1">
+                            <div class="card-body">
+                                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+                                    <div>
+                                        <h6><%= r3.getString(2)%> <%= r3.getString(3)%></h6>
+                                        <p class="text-muted"><%= r3.getString(6)%> <br>Contact at: <%= r3.getString(4)%></p>
+                                    </div>
+                                    <div class="d-flex flex-row">
+                                        <a href="<%= r2.getString(4)%>" target="_blank" class="btn btn-primary m-1">View Report</a>
+                                        <form action="IssueCertificate" method="post">
+                                            <input type="hidden" name="pid" value="<%= projectId %>">
+                                            <input type="hidden" name="uid" value="<%= userId %>">
+                                            <button class="btn btn-success m-1" type="submit">Generate Certificate</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%}
+                        }}%>
+                </div>
+                    
+                    
+                    
+                    
                 <!-- Report Submissions -->
                 <div>
                     <h4>Proposed Solutions:</h4>
                     <%
+                        
                         Statement stmt2 = con.createStatement();
-                        ResultSet res2 = stmt2.executeQuery("Select * from solutions where pid = " + pid + ";");
+                        ResultSet res2 = stmt2.executeQuery("Select * from solutions where pid = (select pid from projects where pid = "+pid+" and status != 'completed' ) and sid != (select sid from projects where pid = "+pid+")" );
                         while (res2.next()) {
+                            String sid = res2.getString(1);
                             Statement stmt3 = con.createStatement();
                             ResultSet res3 = stmt3.executeQuery("Select * from users where id = " + res2.getInt(2) + ";");
                             if (res3.next()) {
@@ -123,7 +177,18 @@
                                     </div>
                                     <div class="d-flex flex-row">
                                         <a href="<%= res2.getString(4)%>" target="_blank" class="btn btn-primary m-1">View Report</a>
-                                        <button class="btn btn-success m-1">Approve</button>
+                                        <form action="ApproveProject" method="post">
+                                            <input type="hidden" name="sid" value="<%= sid %>">
+                                            <input type="hidden" name="pid" value="<%= projectId %>">
+                                            <%
+                                                if(statusProject.equals("posted"))
+                                                {%>
+                                                    <button class="btn btn-success m-1" type="submit">Approve</button>
+                                                <%}
+                                                
+                                            %>
+                                            
+                                        </form>
                                     </div>
                                 </div>
                             </div>

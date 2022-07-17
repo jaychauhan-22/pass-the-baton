@@ -29,7 +29,7 @@
     <body>
         <!-- Header Started -->
         <header>
-            <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand" href="#">
                     <img src="assest/images/img-02.png" width="30" height="30" class="d-inline-block align-top"
                          alt="">
@@ -43,7 +43,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="home.jsp">Home</a>
+                            <a class="nav-link" href="org_home.jsp">Home</a>
                         </li>
                         <!-- <li class="nav-item my-2 my-lg-0">
                           
@@ -77,17 +77,20 @@
 
                             int oid = Integer.parseInt(session.getAttribute("oid").toString());
                             Statement stmt = con.createStatement();
-                            ResultSet res = stmt.executeQuery("Select * from projects where oid = " + oid + ";");
+                            ResultSet res = stmt.executeQuery("Select * from projects where oid = " + oid + " and not status= 'completed';");
 
                             while (res.next()) {
                                 String projectId = res.getString(1);
                                 String projectTitle = res.getString(2);
                                 String projectDescription = res.getString(3);
+                                Timestamp datetime = res.getTimestamp(7);
+                                Date dated = new Date(datetime.getTime());
+                                
                     %>
                     <div class="card m-2" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><%= projectTitle%></h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Issued On: 20/07/2022</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Issued on: <%= dated%> </h6>
                             <p class="card-text">
                                 <%= projectDescription.substring(0,(projectDescription.length() > 90 ? 90 : projectDescription.length())) %>
                             </p>
@@ -109,33 +112,41 @@
             <div class="mt-2">
                 <h1>Past Projects</h1>
                 <div class="project-cards d-flex flex-column flex-md-row overflow-auto">
+                    <%
+                        try {
+                            Class.forName("com.mysql.jdbc.Driver");
+                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hackathon", "root", "");
+
+                            int oid = Integer.parseInt(session.getAttribute("oid").toString());
+                            Statement stmt = con.createStatement();
+                            ResultSet res = stmt.executeQuery("Select * from projects where oid = " + oid + " and status= 'completed';");
+
+                            while (res.next()) {
+                                String projectId = res.getString(1);
+                                String projectTitle = res.getString(2);
+                                String projectDescription = res.getString(3);
+                                Timestamp datetime = res.getTimestamp(7);
+                                Date dated = new Date(datetime.getTime());
+                                
+                    %>
                     <div class="card m-2" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title">Project title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Issued On: 20/07/2022</h6>
-                            <h6 class="card-subtitle mb-2 text-muted">Completed On: 30/07/2022</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link">View Project</a>
+                            <h5 class="card-title"><%= projectTitle%></h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Issued on: <%= dated%> </h6>
+                            <p class="card-text">
+                                <%= projectDescription.substring(0,(projectDescription.length() > 90 ? 90 : projectDescription.length())) %>
+                            </p>
                         </div>
-                    </div>
-                    <div class="card m-2" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Project title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Issued On: 20/07/2022</h6>
-                            <h6 class="card-subtitle mb-2 text-muted">Completed On: 30/07/2022</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link">View Project</a>
+
+                        <div class="card-footer text-muted">
+                            <a href="viewproject.jsp?pid=<%= projectId%>" class="card-link">View Project</a>
                         </div>
-                    </div>
-                    <div class="card m-2" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Project title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Issued On: 20/07/2022</h6>
-                            <h6 class="card-subtitle mb-2 text-muted">Completed On: 30/07/2022</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link">View Project</a>
-                        </div>
-                    </div>
+                    </div>    
+                    <%        }
+                        } catch (Exception e) {
+                            out.println(e);
+                        }
+                    %>				
                 </div>
             </div>
             <!-- End of Past Projects -->
