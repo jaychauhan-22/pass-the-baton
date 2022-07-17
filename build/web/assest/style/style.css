@@ -54,13 +54,13 @@ footer nav ul li{
 /*Info card*/
 #Workflow {
     padding: 40px 0px 80px;
-    background-color: #fff;
+    background-image: linear-gradient(#333, #121212);
     color: #333;
 }
 #Workflow .work-process::after {
     content: "";
     position: absolute;
-    background: #f1f3f5;
+    background: rgba(209, 211, 124, 0.22);
     left: 0px;
     top: 0px;
     width: 0px;
@@ -81,7 +81,6 @@ footer nav ul li{
     position: relative;
     z-index: 1;
     transition: 0.5s;
-    box-shadow: 0px 30px 0px -20px #ffffff;
     margin-bottom: 30px;
     border-bottom: 3px solid #ccc31a;
     text-align: center;

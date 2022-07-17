@@ -124,9 +124,9 @@
                     <div class="row">
                         <div class="col-md-8 offset-md-2">
                             <div class="section-title">
-                                <h2 class="text-center">How It Works?</h2>              
+                                <h1 class="text-center text-white">How It Works?</h1>              
                             </div>
-                            <hr class="border-black mb-4 mt-4">
+                            <hr class="border-white mb-4 mt-4">
                         </div>
                     </div>
                     <div class="row">
