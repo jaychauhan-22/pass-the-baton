@@ -32,7 +32,7 @@ public class ApproveProject extends HttpServlet {
                 
                 if(result != 1)
                     out.println("Something went wrong.. Please try again later..");
-                response.sendRedirect("org_home.jsp");
+                response.sendRedirect("viewproject.jsp");
             } catch(Exception e){
                 out.println(e);
             }

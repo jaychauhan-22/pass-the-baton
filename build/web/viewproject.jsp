@@ -62,8 +62,7 @@
         </header>
         <!-- Header Ended -->
 
-        <%
-            try {
+        <%            try {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hackathon", "root", "");
 
@@ -88,8 +87,8 @@
                             <i class="fa fa-pencil"></i>
                         </button>
                         <form action="DeleteProject" method="post">
-                            
-                            <input type="hidden" name="pid" value="<%= projectId %>">
+
+                            <input type="hidden" name="pid" value="<%= projectId%>">
                             <button class="btn btn-danger" title="Delete Project" type="submit"><i class="fa fa-trash"></i></button>
                         </form>
                     </div>
@@ -108,20 +107,59 @@
                         <%= preferences%>
                     </p>
                 </div>
-                    
-                    
-                    
-                    <div>
-                    
+
+
+
+                <div>
                     <%
-                        Statement st2 = con.createStatement();
-                        ResultSet r2 = st2.executeQuery("Select * from solutions where sid = (select sid from projects where pid = "+pid+" and status = 'under development' );");
-                        
-                        {
-                            %>
-                        <h4>Ongoing Solutions:</h4>
-                        <%
-                        while (r2.next()) {
+                        Statement stm1 = con.createStatement();
+                        ResultSet rm1 = stm1.executeQuery("Select * from solutions where sid = (select sid from projects where pid = " + pid + " and status = 'completed' );");
+                        int iscomplete = 0;
+                        if (statusProject.equals("completed")) {
+                    %>
+                    <h4>Completed Solutions:</h4>
+                    <%
+                        while (rm1.next()) {
+                            iscomplete = 1;
+                            Statement stm3 = con.createStatement();
+                            int userId = rm1.getInt(2);
+                            ResultSet rm3 = stm3.executeQuery("Select * from users where id = " + rm1.getInt(2) + ";");
+                            if (rm3.next()) {
+                    %>
+                    <div class="p-2 p-lg-2">
+                        <div class="card m-1">
+                            <div class="card-body">
+                                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+                                    <div>
+                                        <h6><%= rm3.getString(2)%> <%= rm3.getString(3)%></h6>
+                                        <p class="text-muted"><%= rm3.getString(6)%> <br>Contact at: <%= rm3.getString(4)%></p>
+                                    </div>
+                                    <div class="d-flex flex-row">
+                                        <a href="<%= rm1.getString(4)%>" target="_blank" class="btn btn-primary m-1">View Report</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%}
+                            }
+                        }%>
+                </div>
+
+
+
+
+
+                <div>
+                    <%
+                        if (iscomplete == 0 && statusProject.equals("under development")) {
+                            Statement st2 = con.createStatement();
+                            ResultSet r2 = st2.executeQuery("Select * from solutions where sid = (select sid from projects where pid = " + pid + " and status = 'under development' );");
+
+
+                    %>
+                    <h4>Ongoing Solutions:</h4>
+                    <%                            while (r2.next()) {
                             Statement st3 = con.createStatement();
                             int userId = r2.getInt(2);
                             ResultSet r3 = st3.executeQuery("Select * from users where id = " + r2.getInt(2) + ";");
@@ -138,8 +176,8 @@
                                     <div class="d-flex flex-row">
                                         <a href="<%= r2.getString(4)%>" target="_blank" class="btn btn-primary m-1">View Report</a>
                                         <form action="IssueCertificate" method="post">
-                                            <input type="hidden" name="pid" value="<%= projectId %>">
-                                            <input type="hidden" name="uid" value="<%= userId %>">
+                                            <input type="hidden" name="pid" value="<%= projectId%>">
+                                            <input type="hidden" name="uid" value="<%= userId%>">
                                             <button class="btn btn-success m-1" type="submit">Generate Certificate</button>
                                         </form>
                                     </div>
@@ -147,20 +185,24 @@
                             </div>
                         </div>
                     </div>
-                    <%}
-                        }}%>
+                    <%
+                                }
+                            }
+                        }%>
                 </div>
-                    
-                    
-                    
-                    
+
+
+
+
                 <!-- Report Submissions -->
                 <div>
+                    <%
+                        if (!statusProject.equals("completed")) {
+                    %>
                     <h4>Proposed Solutions:</h4>
                     <%
-                        
                         Statement stmt2 = con.createStatement();
-                        ResultSet res2 = stmt2.executeQuery("Select * from solutions where pid = (select pid from projects where pid = "+pid+" and status != 'completed' ) and sid != (select sid from projects where pid = "+pid+")" );
+                        ResultSet res2 = stmt2.executeQuery("Select * from solutions where pid = (select pid from projects where pid = " + pid + " and status != 'completed' ) and sid != (select sid from projects where pid = " + pid + ")");
                         while (res2.next()) {
                             String sid = res2.getString(1);
                             Statement stmt3 = con.createStatement();
@@ -178,16 +220,15 @@
                                     <div class="d-flex flex-row">
                                         <a href="<%= res2.getString(4)%>" target="_blank" class="btn btn-primary m-1">View Report</a>
                                         <form action="ApproveProject" method="post">
-                                            <input type="hidden" name="sid" value="<%= sid %>">
-                                            <input type="hidden" name="pid" value="<%= projectId %>">
+                                            <input type="hidden" name="sid" value="<%= sid%>">
+                                            <input type="hidden" name="pid" value="<%= projectId%>">
                                             <%
-                                                if(statusProject.equals("posted"))
-                                                {%>
-                                                    <button class="btn btn-success m-1" type="submit">Approve</button>
-                                                <%}
-                                                
+                                                if (statusProject.equals("posted")) {%>
+                                            <button class="btn btn-success m-1" type="submit">Approve</button>
+                                            <%}
+
                                             %>
-                                            
+
                                         </form>
                                     </div>
                                 </div>
@@ -195,6 +236,7 @@
                         </div>
                     </div>
                     <%}
+                            }
                         }%>
                 </div>
 
