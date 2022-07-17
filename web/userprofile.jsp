@@ -42,10 +42,10 @@
         <!-- Header Started -->
         <header>
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="#">
                     <img src="assest/images/img-02.png" width="30" height="30" class="d-inline-block align-top"
                          alt="">
-                    NameofWebsite
+                        PASS-THE-BATON
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,26 +55,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#carouselExampleCaptions">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#our-team-id">Our Team</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact-us-id">Contact Us</a>
+                            <a class="nav-link" href="home.jsp">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <!-- <li class="nav-item my-2 my-lg-0">
-                                        
-                                      </li> -->
+                          
+                        </li> -->
                     </ul>
+                    
                     <span>
-                        <a href="userprofile.jsp"><button type="button" class="btn btn-outline-warning"><i class='fas fa-user-alt'></i>
-                                User Profile</button></a>
+                        <a href="userprofile.jsp"><button type="button" class="btn btn-outline-warning"><i class='fas fa-user-alt'></i> User Profile</button></a>
                     </span>
                     <!-- <form class="form-inline my-2 my-lg-0">
-                                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                                </form> -->
+                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form> -->
                 </div>
             </nav>
         </header>

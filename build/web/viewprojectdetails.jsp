@@ -78,7 +78,7 @@
                     String title = rst.getString(2);
                     String description = rst.getString(3);
                     String preference = rst.getString(4);
-
+                    int uid = Integer.parseInt((String) session.getAttribute("uid"));
                     String orgname = rst2.getString(2);
                     String orgemail = rst2.getString(3);
                     String orgdesc = rst2.getString(4);
@@ -109,12 +109,27 @@
                         <p><%= orgdesc%></p>
                     </div>
                     <!-- Submit report -->
+                    <%
+                        Statement st_tem = con.createStatement();
+                        ResultSet r_tem = st_tem.executeQuery("select * from solutions where pid = " + pid + " and uid = " + uid + ";");
+                        if (r_tem.next()) {
+                    %>
+                    <div>
+                        <div class="flex-column flex-md-row justify-content-between align-items-center my-2">
+                            <div>
+                                <div class="alert alert-success" role="alert">
+                                    Your Response Successfully Submitted.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%} else {%>
+
                     <div>
                         <div class="flex-column flex-md-row justify-content-between align-items-center my-2">
                             <div>
                                 <h5 class="">Submit Your Project Details</h5>
                             </div>
-
                             <form action="UploadSolution" class="col-lg-6" method="post">
                                 <div class="row">
                                     <input type="hidden" value="<%= pid%>" name="pid" >
@@ -125,11 +140,11 @@
                                     </div>
                                 </div>
                             </form>
-
-
                         </div>
-
                     </div>
+                    <%}
+
+                    %>
                     <div class="mt-2">
                         <h6>How To Submit ?</h6>
                         <ul>
@@ -147,8 +162,7 @@
                     <div class="p-3 py-5">
                         <div class="d-flex justify-content-between align-items-center experience h2"><span>Recent Projects: </span></div>
                         <div class="col-md-12"><label class="labels" style="font-size: 13pt;">Other Projects by the Organization:</label></div>
-                        <%
-                            Statement stmt3 = con.createStatement();
+                        <%                            Statement stmt3 = con.createStatement();
                             ResultSet rst3 = stmt3.executeQuery("select * from projects where oid = " + orgid + ";");
                             while (rst3.next()) {
                         %>
