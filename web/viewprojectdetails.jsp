@@ -78,6 +78,7 @@
                     String title = rst.getString(2);
                     String description = rst.getString(3);
                     String preference = rst.getString(4);
+                    String status = rst.getString(6);
                     int uid = Integer.parseInt((String) session.getAttribute("uid"));
                     String orgname = rst2.getString(2);
                     String orgemail = rst2.getString(3);
@@ -88,8 +89,9 @@
             <div class="row">
                 <div class="bg-white col-md-8 card shadow-lg p-4 p-lg-4">
                     <!-- header -->
-                    <div class="d-flex justify-content-between">
-                        <h1><%= title%></h1>
+                    <div class="d-flex justify-content-start align-items-center">
+                        <h2><%= title%> </h2> 
+                        <label class="badge badge-pill badge-warning mx-2" style="font-size: 18px;"><%= status %></label>
                     </div>
                     <hr>
                     <!-- body -->
@@ -100,6 +102,10 @@
                     <div>
                         <h4>Preferences</h4>
                         <p class="text-muted"><%= preference%></p>
+                    </div>
+                    <div>
+                        <h4>Email</h4>
+                        <p class="text-muted"><%= orgemail %></p>
                     </div>
                     <hr>
                     <!-- Organization Details -->
