@@ -25,6 +25,64 @@
         <!--====================================================================================================================-->
 
         <title>Hackathon Project</title>
+        <style>
+            /*Info card*/
+            #Workflow {
+                padding: 40px 0px 80px;
+                background-image: linear-gradient(#333, #121212);
+                color: #333;
+            }
+            #Workflow .work-process::after {
+                content: "";
+                position: absolute;
+                background: rgba(209, 211, 124, 0.22);
+                left: 0px;
+                top: 0px;
+                width: 0px;
+                height: 100%;
+                transition: all 0.3s;
+                z-index: -1;
+            }
+            #Workflow .work-process:hover::after {
+                background: rgba(209, 211, 124, 0.22);
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                border-radius: 10px;
+            }
+            #Workflow .work-process {
+                background-color: #333;
+                padding: 40px 15px;
+                position: relative;
+                z-index: 1;
+                transition: 0.5s;
+                margin-bottom: 30px;
+                border-bottom: 3px solid #ccc31a;
+                text-align: center;
+            }
+            #Workflow .work-process i {
+                margin: 0 auto;
+                display: table;
+                color: #ffffff;
+                background-color: rgb(255, 205, 0);
+                width: 70px;
+                height: 70px;
+                border-radius: 8px;
+                font-size: 40px;
+                text-align: center;
+                line-height: 70px;
+            }
+            #Workflow .work-process h3 {
+                margin: 15px 0px;
+            }
+            #Workflow .work-process h3 a {
+                font-size: 20px;
+                color: rgb(249, 213, 67);
+            }
+            #Workflow .work-process p {
+                color: rgba(255, 216, 61, 0.738);
+            }
+        </style>
     </head>
 
     <body>
@@ -91,19 +149,19 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img src="assest/img/1.png" class="d-block w-100" alt="...">
-                            
+
                         </div>
                         <div class="carousel-item">
                             <img src="assest/img/2.png" class="d-block w-100" alt="...">
-                            
+
                         </div>
                         <div class="carousel-item">
                             <img src="assest/img/3.png" class="d-block w-100" alt="...">
-                            
+
                         </div>
                         <div class="carousel-item">
                             <img src="assest/img/4.png" class="d-block w-100" alt="...">
-                            
+
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
@@ -159,53 +217,53 @@
                     </div>
 
                     <div class="row d-flex justify-content-around mx-lg-4">
-                      <div class="col-md-4">
-                          <div class="work-process">
-                              <i class="fa fa-check-square-o"></i>
-                              <h3><a href="#">Organizations Perks</a></h3>
-                              <p>
-                                Innovative solutions from emerging minds.
-                              </p>
-                              <br>
+                        <div class="col-md-4">
+                            <div class="work-process">
+                                <i class="fa fa-check-square-o"></i>
+                                <h3><a href="#">Organizations Perks</a></h3>
+                                <p>
+                                    Innovative solutions from emerging minds.
+                                </p>
                                 <br>
-                          </div>
-                      </div>
-                      <div class="col-md-4">
-                          <div class="work-process">
-                              <i class="fa fa-star"></i>
-                              <h3><a href="#">Student Perks</a></h3>
-                              <p>
-                                  Certificate of project completion authorized by respective Organization & Pas-The-Baton. 
-                              </p>
-                          </div>
-                      </div>
-                  </div>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="work-process">
+                                <i class="fa fa-star"></i>
+                                <h3><a href="#">Student Perks</a></h3>
+                                <p>
+                                    Certificate of project completion authorized by respective Organization & Pas-The-Baton. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
             <!--info cards ended-->
-            
+
             <!-- Our team Started  -->
-<!--            <div class="our-team" id="our-team-id">
-                <div class="title">
-                    <label for="ourTeamSection">Our Team</label>
-                </div>
-                <div class="d-flex justify-content-center row mx-4">
-                    <div class="card bg-dark col-lg-3 col-md-6 m-lg-4 my-4">
-                        <img class="card-img-top" src="assest/img/developer.png" class="img-fluid" alt="Card image">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Pankil Doshi</h5>
-                            <a href="https://www.linkedin.com/in/pankil-doshi-1705561a1" target="_blank" class="btn btn-link" style="font-size: 3vh"><i class="fa fa-linkedin-square"></i>  LinkedIn</a>
-                        </div>
-                    </div>
-                    <div class="card bg-dark col-lg-3 col-md-6 m-lg-4 my-4">
-                        <img class="card-img-top" src="assest/img/developer.png" class="img-fluid" alt="Card image">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Jay Chauhan</h5>
-                            <a href="https://www.linkedin.com/in/jay-chauhan-b83b2620b" target="_blank" class="btn btn-link"style="font-size: 3vh"><i class="fa fa-linkedin-square"></i>  LinkedIn</a>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
+            <!--            <div class="our-team" id="our-team-id">
+                            <div class="title">
+                                <label for="ourTeamSection">Our Team</label>
+                            </div>
+                            <div class="d-flex justify-content-center row mx-4">
+                                <div class="card bg-dark col-lg-3 col-md-6 m-lg-4 my-4">
+                                    <img class="card-img-top" src="assest/img/developer.png" class="img-fluid" alt="Card image">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Pankil Doshi</h5>
+                                        <a href="https://www.linkedin.com/in/pankil-doshi-1705561a1" target="_blank" class="btn btn-link" style="font-size: 3vh"><i class="fa fa-linkedin-square"></i>  LinkedIn</a>
+                                    </div>
+                                </div>
+                                <div class="card bg-dark col-lg-3 col-md-6 m-lg-4 my-4">
+                                    <img class="card-img-top" src="assest/img/developer.png" class="img-fluid" alt="Card image">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Jay Chauhan</h5>
+                                        <a href="https://www.linkedin.com/in/jay-chauhan-b83b2620b" target="_blank" class="btn btn-link"style="font-size: 3vh"><i class="fa fa-linkedin-square"></i>  LinkedIn</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
             <!-- Out team Ended -->
 
             <!-- ContactUs Form Started -->

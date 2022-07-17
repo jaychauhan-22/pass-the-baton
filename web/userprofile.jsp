@@ -139,23 +139,84 @@
                     </form>
                         </div>
                     <div class="col-md-4">
+                        
+                        <div class="row">
+                            <div class="p-3 py-5">
+                                <div class="d-flex justify-content-between align-items-center experience h4 mb-3"><span>Submitted Responses</span></div>
+                                <div class="col-md-12"><label class="labels h5">List of Projects:</label></div>
+                                <%
+                                    Statement stmt7 = con.createStatement();
+                                    ResultSet rst7 = stmt7.executeQuery("select * from solutions where uid = " + userid + ";");
+                                    while (rst7.next()) {
+                                        int pid = rst7.getInt(3);
+                                        Statement stmt8 = con.createStatement();
+                                        ResultSet rst8 = stmt8.executeQuery("select * from projects where pid = " + pid + " and status='posted';");
+                                        if (rst8.first()) {
+                                %>
+
+                                <div>
+                                    <form action="viewprojectdetails.jsp" method="post">
+                                        <input type="hidden" name="p_id" value="<%= rst8.getInt(1)%>">
+                                        <input type="hidden" name="org_id" value="<%= rst8.getInt(5)%>">
+                                        <input type="submit" class="btn btn-link" value="<%= rst8.getString(2)%>">
+                                    </form>
+                                </div>
+                                <%
+                                        }
+                                    }
+                                %>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        <div class="row">
+                            <div class="p-3 py-5">
+                                <div class="d-flex justify-content-between align-items-center experience h4 mb-3"><span>Ongoing Projects</span></div>
+                                <div class="col-md-12"><label class="labels h5">List of Projects:</label></div>
+                                <%
+                                    Statement stmt3 = con.createStatement();
+                                    ResultSet rst3 = stmt3.executeQuery("select * from solutions where uid = " + userid + ";");
+                                    while (rst3.next()) {
+                                        int pid = rst3.getInt(3);
+                                        Statement stmt4 = con.createStatement();
+                                        ResultSet rst4 = stmt4.executeQuery("select * from projects where pid = " + pid + " and status='under development';");
+                                        if (rst4.first()) {
+                                %>
+
+                                <div>
+                                    <form action="viewprojectdetails.jsp" method="post">
+                                        <input type="hidden" name="p_id" value="<%= rst4.getInt(1)%>">
+                                        <input type="hidden" name="org_id" value="<%= rst4.getInt(5)%>">
+                                        <input type="submit" class="btn btn-link" value="<%= rst4.getString(2)%>">
+                                    </form>
+                                </div>
+                                <%
+                                        }
+                                    }
+                                %>
+                            </div>
+                        </div>
+                        
+                        
                         <div class="p-3 py-5">
                             <div class="d-flex justify-content-between align-items-center experience h4 mb-3"><span>Past Performance: </span></div>
                             <div class="col-md-12"><label class="labels h5">List of Previously Earned Certificates:</label></div>
                             <%
-                                Statement stmt3 = con.createStatement();
-                                ResultSet rst3 = stmt3.executeQuery("select * from certificates where userid = " + userid + ";");
-                                while (rst3.next()) {
-                                    int pid = rst3.getInt(4);
-                                    Statement stmt4 = con.createStatement();
-                                    ResultSet rst4 = stmt4.executeQuery("select * from projects where pid = " + pid + ";");
-                                    if (rst4.first()) {
+                                Statement stmt4 = con.createStatement();
+                                ResultSet rst4 = stmt4.executeQuery("select * from certificates where userid = " + userid + ";");
+                                while (rst4.next()) {
+                                    int pid = rst4.getInt(4);
+                                    Statement stmt5 = con.createStatement();
+                                    ResultSet rst5 = stmt5.executeQuery("select * from projects where pid = " + pid + " and status='completed';");
+                                    if (rst5.first()) {
                             %>
 
                             <div>
                                 <form action="printcertificate.jsp" method="post">
-                                    <input type="hidden" name="cid" value="<%= rst3.getInt(1)%>">
-                                    <input type="submit" class="btn btn-link" value="<%= rst4.getString(2)%>">
+                                    <input type="hidden" name="cid" value="<%= rst4.getInt(1)%>">
+                                    <input type="submit" class="btn btn-link" value="<%= rst5.getString(2)%>">
                                 </form>
                             </div>
                             <%
@@ -166,7 +227,6 @@
                                 } catch (Exception e) {
                                     out.println("Exception Occurred: " + e);
                                 }
-
                             %>
                         </div>
                     </div>
