@@ -31,10 +31,10 @@
         <!-- Header Started -->
         <header>
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index.jsp">
                     <img src="assest/images/img-02.png" width="30" height="30" class="d-inline-block align-top"
                          alt="">
-                    NameofWebsite
+                    Pass-The-Baton
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,17 +44,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#carouselExampleCaptions">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#our-team-id">Our Team</a>
+                            <a class="nav-link" href="ourteam.jsp">Our Team</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#contact-us-id">Contact Us</a>
+                            <a class="nav-link" href="contact.jsp">Contact Us</a>
                         </li>
-                        <!-- <li class="nav-item my-2 my-lg-0">
-                          
-                        </li> -->
                     </ul>
                     <span>
                         <div class="dropdown">
@@ -67,10 +64,6 @@
                             </div>
                         </div>
                     </span>
-                    <!-- <form class="form-inline my-2 my-lg-0">
-                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form> -->
                 </div>
             </nav>
         </header>
@@ -183,64 +176,8 @@
                 </div>
             </section>
             <!--info cards ended-->
+
             
-            <!-- Our team Started  -->
-<!--            <div class="our-team" id="our-team-id">
-                <div class="title">
-                    <label for="ourTeamSection">Our Team</label>
-                </div>
-                <div class="d-flex justify-content-center row mx-4">
-                    <div class="card bg-dark col-lg-3 col-md-6 m-lg-4 my-4">
-                        <img class="card-img-top" src="assest/img/developer.png" class="img-fluid" alt="Card image">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Pankil Doshi</h5>
-                            <a href="https://www.linkedin.com/in/pankil-doshi-1705561a1" target="_blank" class="btn btn-link" style="font-size: 3vh"><i class="fa fa-linkedin-square"></i>  LinkedIn</a>
-                        </div>
-                    </div>
-                    <div class="card bg-dark col-lg-3 col-md-6 m-lg-4 my-4">
-                        <img class="card-img-top" src="assest/img/developer.png" class="img-fluid" alt="Card image">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Jay Chauhan</h5>
-                            <a href="https://www.linkedin.com/in/jay-chauhan-b83b2620b" target="_blank" class="btn btn-link"style="font-size: 3vh"><i class="fa fa-linkedin-square"></i>  LinkedIn</a>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-            <!-- Out team Ended -->
-
-            <!-- ContactUs Form Started -->
-            <div class="container-fluid contact-us pb-5" id="contact-us-id">
-                <div class="title">
-                    <label for="ContactUsSection">Contact Us</label>
-                </div>
-                <form class="contact-form" action="contactus" method="post">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputname4">Name</label>
-                            <input type="name" class="form-control" id="inputname4" placeholder="Name" name="name" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email" required>
-                        </div>
-                        <div class="form-group col-md-12">
-                            <label for="inputquery">Query</label>
-                            <textarea class="form-control" placeholder="Enter your text" required name="description"></textarea>
-                        </div>
-                    </div>
-                    <% if (session.getAttribute("responsesend") != null && session.getAttribute("responsend") != (" ")) {
-                    %>
-                    <div class="alert alert-success" role="alert">
-                        Response Send Successfully..
-                    </div>><%
-                        }
-                    %>
-                    <button type="submit" class="px-4 btn btn-primary my-3">Submit response</button>
-
-                </form>
-
-            </div>
-            <!-- ContactUs Form Ended -->
 
         </main>
         <!-- Main Ended -->
