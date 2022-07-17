@@ -86,28 +86,24 @@
                         <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
                         <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
                         <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="assest/img/Artboard-01.png" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>First slide label</h5>
-                                <p>Some representative placeholder content for the first slide.</p>
-                            </div>
+                            <img src="assest/img/1.png" class="d-block w-100" alt="...">
+                            
                         </div>
                         <div class="carousel-item">
-                            <img src="assest/img/Artboard-02.png" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Second slide label</h5>
-                                <p>Some representative placeholder content for the second slide.</p>
-                            </div>
+                            <img src="assest/img/2.png" class="d-block w-100" alt="...">
+                            
                         </div>
                         <div class="carousel-item">
-                            <img src="assest/img/Artboard-02.png" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Third slide label</h5>
-                                <p>Some representative placeholder content for the third slide.</p>
-                            </div>
+                            <img src="assest/img/3.png" class="d-block w-100" alt="...">
+                            
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assest/img/4.png" class="d-block w-100" alt="...">
+                            
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
@@ -122,8 +118,74 @@
             </div>
             <!-- Slider Ended -->
 
+            <!--info cards-->
+            <section id="Workflow">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <div class="section-title">
+                                <h1 class="text-center text-white">How It Works?</h1>              
+                            </div>
+                            <hr class="border-white mb-4 mt-4">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="work-process">
+                                <i class="fa fa-building-o"></i>
+                                <h3><a href="#">Organizations</a></h3>
+                                <p>
+                                    Organizations & NGO's who are looking for solutions to their problems.  
+                                </p>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="work-process">
+                                <i class="fa fa-users"></i>
+                                <h3><a href="#">Students</a></h3>
+                                <p>Students who are looking for project ideas and lean towards the project based learning.</p>
+                                <br> <br>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="work-process">
+                                <i class="fa fa-puzzle-piece"></i>
+                                <h3><a href="#">Pass-The-Baton</a></h3>
+                                <p>Providing platform where organization can bring their problems to get the solution & students get the chance to put their skills & knowledge in action.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-around mx-lg-4">
+                      <div class="col-md-4">
+                          <div class="work-process">
+                              <i class="fa fa-check-square-o"></i>
+                              <h3><a href="#">Organizations Perks</a></h3>
+                              <p>
+                                Innovative solutions from emerging minds.
+                              </p>
+                              <br>
+                                <br>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="work-process">
+                              <i class="fa fa-star"></i>
+                              <h3><a href="#">Student Perks</a></h3>
+                              <p>
+                                  Certificate of project completion authorized by respective Organization & Pas-The-Baton. 
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </section>
+            <!--info cards ended-->
+            
             <!-- Our team Started  -->
-            <div class="our-team" id="our-team-id">
+<!--            <div class="our-team" id="our-team-id">
                 <div class="title">
                     <label for="ourTeamSection">Our Team</label>
                 </div>
@@ -143,7 +205,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <!-- Out team Ended -->
 
             <!-- ContactUs Form Started -->
