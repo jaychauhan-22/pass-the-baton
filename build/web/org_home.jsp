@@ -30,7 +30,7 @@
         <!-- Header Started -->
         <header>
             <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="org_home.jsp">
                     <img src="assest/images/img-02.png" width="30" height="30" class="d-inline-block align-top"
                          alt="">
                     PASS-THE-BATON

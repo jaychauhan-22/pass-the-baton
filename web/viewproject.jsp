@@ -30,7 +30,7 @@
         <!-- Header Started -->
         <header>
             <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="org_home.jsp">
                     <img src="assest/images/img-02.png" width="30" height="30" class="d-inline-block align-top"
                          alt="">
                     PASS-THE-BATON
@@ -288,6 +288,7 @@
             }
         %>
 
+             
         <!-- jQuery and Bootstrap Bundle (includes Popper) -->
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

@@ -8,7 +8,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+        <title>Home</title>
         <!-- Bootstrap CSS -->
         <!--====================================================================================================================-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
@@ -25,14 +25,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap" rel="stylesheet">
         <!--====================================================================================================================-->
         <script src="https://kit.fontawesome.com/d72e2bd739.js" crossorigin="anonymous"></script>
-        <title>Home Page</title>
     </head>
 
     <body>
         <!-- Header Started -->
         <header>
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="home.jsp">
                     <img src="assest/images/img-02.png" width="30" height="30" class="d-inline-block align-top"
                          alt="">
                         PASS-THE-BATON
@@ -47,18 +46,11 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="home.jsp">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <!-- <li class="nav-item my-2 my-lg-0">
-                          
-                        </li> -->
                     </ul>
                     
                     <span>
                         <a href="userprofile.jsp"><button type="button" class="btn btn-outline-warning"><i class='fas fa-user-alt'></i> User Profile</button></a>
                     </span>
-                    <!-- <form class="form-inline my-2 my-lg-0">
-                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form> -->
                 </div>
             </nav>
         </header>
@@ -97,6 +89,7 @@
                     String title = rst.getString(2);
                     String description = rst.getString(3);
                     int oid = rst.getInt(5);
+                    String issuedDate = rst.getString(7);
                     Statement st2 = con.createStatement();
                     ResultSet rst2 = st2.executeQuery("select * from organizations where id = "+oid+";");
                     if(rst2.first())
@@ -114,7 +107,7 @@
                     <input type="submit" class="btn btn-primary" value="Get Details">
                 </div>
                     <div class="card-footer text-muted">
-                        2 days ago
+                        <%= issuedDate %>
                     </div>
             </div>
             </form>

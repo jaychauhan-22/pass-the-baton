@@ -7,6 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <title>Pass-The-Baton</title>
 
     <!-- Bootstrap CSS -->
     <!--====================================================================================================================-->
@@ -37,7 +38,6 @@
     />
     <!--====================================================================================================================-->
 
-    <title>Hackathon Project</title>
     <style>
       /*Info card*/
       #Workflow {
@@ -296,9 +296,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="center">
           <ul>
-            <li>Copyright &#169; Titlename</li>
-            <li>Hello</li>
-            <li></li>
+            <li>Copyright &#169; PASS-THE-BATON</li>
           </ul>
         </div>
       </nav>
