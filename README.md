@@ -6,6 +6,27 @@ This platform connects the Government and Non Government Organization with the I
 
 # Problem it Solves: 
 Goverment bodies & NGOs get the innovative solution & Students get the chance work on real life projects. Student who can not find interesting problems to work on & Goverments bodies which needs the problems to their solution & NGOs who don't have enough funds. Which in turns benefits Organization to get the innovative solution from the brillent talent over the nation & students get to know & work on the real life problems.
+
+# Higher Level Functionality
+## Organization Viewpoint:
+1. Login/Signup
+2. Post new Project
+3. View Past and Currently Posted Projects
+4. Edit Existing Project
+5. Delete Existing Project
+6. View Submitted Report of the user
+7. Approve Submitted Report
+8. Issue Certificate to the user
+9. Edit Profile
+
+## User Viewpoint:
+1. Login/Signup
+2. View all the posted projects by all the organizations
+3. Submit Report to the organization
+4. View Submitted and Ongoing Project Details
+5. Get Verified Certificate with the credentials of the organization
+6. Edit Profile
+
 # Screen Shots:
 ![1](https://user-images.githubusercontent.com/80458440/180273936-72eba66f-46bb-469e-a8b3-045f73770e26.png)
 ![2](https://user-images.githubusercontent.com/80458440/180274011-1d0e448f-72a4-472a-9b6f-b7e4bf3ab90c.png)
