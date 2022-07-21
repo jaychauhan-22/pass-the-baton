@@ -1,4 +1,4 @@
-# pass-the-baton
+# Pass-The-Baton
 DU'Hackathon 2022 Project
 
 # Project Description: 
@@ -11,12 +11,12 @@ Goverment bodies & NGOs get the innovative solution & Students get the chance wo
 https://youtu.be/Gg0Oa8Pzyrg
 
 # Technology Used:
-HTML
-CSS/BOOTSTRAP
-JAVASCRIPT
-JAVA SERVER PAGES
+HTML,
+CSS/BOOTSTRAP,
+JAVASCRIPT,
+JAVA SERVER PAGES,
 JAVA WEB SERVLET
 
 # Developers:
-Pankil Doshi
+Pankil Doshi,
 Jay Chauhan
