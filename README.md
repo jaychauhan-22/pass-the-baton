@@ -34,7 +34,7 @@ Goverment bodies & NGOs get the innovative solution & Students get the chance wo
 ![4](https://user-images.githubusercontent.com/80458440/180274041-6dfda908-ba3b-4f25-9370-e677044c16f8.png)
 ![5](https://user-images.githubusercontent.com/80458440/180274061-4a4139ea-3c6a-4669-b89f-e45b7101cac2.png)
 
-# Check it out Youtube:
+# Check it out on Youtube:
 https://youtu.be/Gg0Oa8Pzyrg
 
 # Technology Used:
